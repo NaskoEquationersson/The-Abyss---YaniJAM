@@ -31,7 +31,7 @@ public class MehmetEken : MonoBehaviour
         Vector3 direction = new Vector3(inputVector.x, 0f, inputVector.y);
 
         // 4. Objeyi hareket ettirin
-        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
-    }
+    
 }
