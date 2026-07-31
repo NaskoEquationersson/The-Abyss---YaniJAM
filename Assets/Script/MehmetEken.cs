@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MehmetEken : MonoBehaviour
 {
@@ -14,12 +15,23 @@ public class MehmetEken : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        // 2. Klavyeden anlık yön girdilerini okuyun
+        Vector2 inputVector = Vector2.zero;
 
-        float verticalInput = Input.GetAxis("Vertical");
+        if (Keyboard.current != null)
+        {
+            // WASD veya Ok Tuşlarını kontrol eder
+            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed) inputVector.y = 1f;
+            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) inputVector.y = -1f;
+            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) inputVector.x = -1f;
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) inputVector.x = 1f;
+        }
 
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
+        // 3. Girdileri 3 boyutlu hareket vektörüne dönüştürün
+        Vector3 direction = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        // 4. Objeyi hareket ettirin
+        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+    }
     }
 }
