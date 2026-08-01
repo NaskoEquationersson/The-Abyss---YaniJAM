@@ -12,6 +12,8 @@ public class DirectionalBillboard : MonoBehaviour
     public Transform cameraTransform;   // drag Main Camera here
     public MehmetEken playerMovement;   // drag the player object here (or reference logicalFacingDirection directly)
 
+
+    // Now we are rebranching
     void LateUpdate()
     {
         if (cameraTransform == null || spriteRenderer == null) return;
