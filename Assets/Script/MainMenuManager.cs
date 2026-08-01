@@ -45,10 +45,10 @@ public class MainMenuManager : MonoBehaviour
     {
         Debug.Log("Devam et tıklandı.");
         // I let it act as Start for now.
-        if (targetAnimator != null)
+        /* if (targetAnimator != null)
             targetAnimator.SetTrigger(animationTriggerName);
 
         if (menuCanvas != null)
-            menuCanvas.SetActive(false);
+            menuCanvas.SetActive(false); */
     }
 }

@@ -60,7 +60,7 @@ public class PauseManager : MonoBehaviour
     {
         SaveGameData();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("0");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OpenSettings()
