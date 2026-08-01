@@ -13,6 +13,9 @@ public class MehmetEken : MonoBehaviour
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpCooldown = 0.2f; // seconds
+    private float lastJumpTime = -999f;
+
     
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheckPoint;
@@ -48,6 +51,10 @@ public class MehmetEken : MonoBehaviour
         }
 
         Vector3 rawDirection = new Vector3(inputVector.x, 0, inputVector.y);
+        if (rawDirection.sqrMagnitude > 1f)
+        {
+            rawDirection.Normalize();
+        }
         // rb.MovePosition(rb.position + rawDirection * speed * Time.fixedDeltaTime);
         Quaternion cameraYawRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         moveDirection = cameraYawRotation * rawDirection; // store in a field so FixedUpdate can use it
@@ -64,11 +71,14 @@ public class MehmetEken : MonoBehaviour
         {
             jumpRequested = false; // consumed immediately — can't fire twice even if isGrounded is stale for a frame
 
-            if (isGrounded)
+            bool cooldownPassed = Time.time - lastJumpTime > jumpCooldown;
+
+            if (isGrounded && cooldownPassed)
             {
                 // Zero existing vertical velocity first so old upward velocity can't stack with the new impulse
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                lastJumpTime = Time.time;
             }
         }
 
