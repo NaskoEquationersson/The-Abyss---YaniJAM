@@ -9,6 +9,7 @@ public class MehmetEken : MonoBehaviour
     public Rigidbody rb;
 
     private bool isGrounded;
+    private bool jumpRequested;
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 5f;
@@ -19,24 +20,16 @@ public class MehmetEken : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     
 
-    void Jump()
-    {
-        // Apply an upward physical force instantly
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        // 2. Klavyeden anlık yön girdilerini okuyun
+        
         Vector3 inputVector = Vector3.zero;
-
-        isGrounded = Physics.CheckSphere(groundCheckPoint.position, checkRadius, groundLayer);
 
         if (Keyboard.current != null)
         {
@@ -45,17 +38,31 @@ public class MehmetEken : MonoBehaviour
             if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) inputVector.y = -1f;
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) inputVector.x = -1f;
             if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) inputVector.x = 1f;
-            if (isGrounded && Keyboard.current.spaceKey.isPressed) {
-                Jump();
-                // if (Keyboard.current.leftShiftKey.isPressed) inputVector.z = -1f;
+            if (Keyboard.current.spaceKey.wasPressedThisFrame) 
+            {
+                jumpRequested = true;
             }
         }
 
-        // 3. Girdileri 3 boyutlu hareket vektörüne dönüştürün
         Vector3 direction = new Vector3(inputVector.x, inputVector.z, inputVector.y);
-
-        // 4. Objeyi hareket ettirin
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
     }
-    
+
+    void FixedUpdate()
+    {
+        // Ground check happens on the physics clock, consistent with the physics state
+        isGrounded = Physics.CheckSphere(groundCheckPoint.position, checkRadius, groundLayer);
+
+        if (jumpRequested)
+        {
+            jumpRequested = false; // consumed immediately — can't fire twice even if isGrounded is stale for a frame
+
+            if (isGrounded)
+            {
+                // Zero existing vertical velocity first so old upward velocity can't stack with the new impulse
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
+    }
 }
