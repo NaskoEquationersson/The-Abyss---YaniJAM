@@ -28,8 +28,6 @@ public class MehmetEken : MonoBehaviour
 
     public Vector3 LastMoveDirection { get; private set; } = Vector3.forward;
 
-    public NPCBillboard npcBillboard;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,7 +65,7 @@ public class MehmetEken : MonoBehaviour
         {
             LastMoveDirection = moveDirection.normalized; // only update when actually moving, so it holds last-faced direction when idle
         }
-        npcBillboard.facingDirection = moveDirection;
+
     }
 
 
