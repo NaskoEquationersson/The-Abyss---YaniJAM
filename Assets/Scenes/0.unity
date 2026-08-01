@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91077887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91077888}
+  m_Layer: 0
+  m_Name: GroundCheckFeet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91077888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91077887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 947616596}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +303,7 @@ MonoBehaviour:
   target: {fileID: 947616596}
   smoothSpeed: 0.00125
   rigidbody: {fileID: 947616597}
-  offset: {x: 0, y: 3, z: -8}
+  offset: {x: 0, y: 2, z: -7}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,12 +458,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417631484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8dc88677727d66a19fb0e8c0bd07494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ebe
   speed: 5
+  rb: {fileID: 0}
+  jumpForce: 5
+  groundCheckPoint: {fileID: 0}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &417631486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -609,6 +647,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MehmetEken
   speed: 7.5
+  rb: {fileID: 947616597}
+  jumpForce: 5
+  groundCheckPoint: {fileID: 91077888}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!65 &947616593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -699,7 +744,8 @@ Transform:
   m_LocalPosition: {x: -8, y: 101, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 91077888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &947616597
@@ -711,7 +757,7 @@ Rigidbody:
   m_GameObject: {fileID: 947616591}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.05
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -727,7 +773,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1221806536
 GameObject:
@@ -742,7 +788,7 @@ GameObject:
   - component: {fileID: 1221806539}
   - component: {fileID: 1221806538}
   - component: {fileID: 1221806537}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Kubus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,12 +802,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221806536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8dc88677727d66a19fb0e8c0bd07494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ebe
   speed: 5
+  rb: {fileID: 0}
+  jumpForce: 5
+  groundCheckPoint: {fileID: 0}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &1221806538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -868,7 +921,7 @@ GameObject:
   - component: {fileID: 1928834745}
   - component: {fileID: 1928834744}
   - component: {fileID: 1928834743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,12 +935,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928834742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8dc88677727d66a19fb0e8c0bd07494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ebe
   speed: 5
+  rb: {fileID: 0}
+  jumpForce: 5
+  groundCheckPoint: {fileID: 0}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &1928834744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -994,8 +1054,8 @@ GameObject:
   - component: {fileID: 2016346168}
   - component: {fileID: 2016346167}
   - component: {fileID: 2016346166}
-  m_Layer: 0
-  m_Name: Kutsal_Baran
+  m_Layer: 3
+  m_Name: KutsalBaran
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,12 +1068,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016346165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8dc88677727d66a19fb0e8c0bd07494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ebe
   speed: 5
+  rb: {fileID: 0}
+  jumpForce: 5
+  groundCheckPoint: {fileID: 0}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &2016346167
 BoxCollider:
   m_ObjectHideFlags: 0
