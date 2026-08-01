@@ -18,7 +18,10 @@ public class MehmetEken : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float checkRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    
+
+    [Header("Camera Reference")]
+    public Transform cameraTransform;
+    private Vector3 moveDirection; 
 
     void Start()
     {
@@ -44,9 +47,13 @@ public class MehmetEken : MonoBehaviour
             }
         }
 
-        Vector3 direction = new Vector3(inputVector.x, inputVector.z, inputVector.y);
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+        Vector3 rawDirection = new Vector3(inputVector.x, 0, inputVector.y);
+        // rb.MovePosition(rb.position + rawDirection * speed * Time.fixedDeltaTime);
+        Quaternion cameraYawRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+        moveDirection = cameraYawRotation * rawDirection; // store in a field so FixedUpdate can use it
+
     }
+
 
     void FixedUpdate()
     {
@@ -64,5 +71,7 @@ public class MehmetEken : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
+
+        rb.MovePosition(rb.position + moveDirection * speed * Time.fixedDeltaTime);
     }
 }
