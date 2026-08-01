@@ -589,6 +589,9 @@ MonoBehaviour:
   smoothSpeed: 0.00125
   rigidbody: {fileID: 947616597}
   offset: {x: 0, y: 2, z: -7}
+  mouseSensitivity: 3
+  minPitch: -20
+  maxPitch: 60
 --- !u!1 &359169995
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +632,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  cameraTransform: {fileID: 0}
 --- !u!65 &359169997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -862,7 +866,7 @@ GameObject:
   - component: {fileID: 417631487}
   - component: {fileID: 417631486}
   - component: {fileID: 417631485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,6 +893,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  cameraTransform: {fileID: 0}
 --- !u!65 &417631486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1152,6 +1157,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  cameraTransform: {fileID: 330585546}
 --- !u!65 &947616593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1281,7 +1287,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947616591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -1519,6 +1525,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  cameraTransform: {fileID: 0}
 --- !u!65 &1221806538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2000,6 +2007,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  cameraTransform: {fileID: 0}
 --- !u!65 &1928834744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2133,6 +2141,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  cameraTransform: {fileID: 0}
 --- !u!65 &2016346167
 BoxCollider:
   m_ObjectHideFlags: 0
