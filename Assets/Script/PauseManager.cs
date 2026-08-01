@@ -82,3 +82,5 @@ public class PauseManager : MonoBehaviour
         Debug.Log("Oyun verileri kaydedildi...");
     }
 }
+
+// It did merge.
