@@ -1084,6 +1084,9 @@ MonoBehaviour:
   smoothSpeed: 0.00125
   rigidbody: {fileID: 947616597}
   offset: {x: 0, y: 2, z: -7}
+  mouseSensitivity: 3
+  minPitch: -20
+  maxPitch: 60
 --- !u!1 &341239936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1302,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraTransform: {fileID: 0}
-  npcBillboard: {fileID: 0}
 --- !u!65 &359169997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1637,7 +1639,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraTransform: {fileID: 0}
-  npcBillboard: {fileID: 0}
 --- !u!65 &417631486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2756,7 +2757,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   cameraTransform: {fileID: 330585546}
-  npcBillboard: {fileID: 1505474005}
 --- !u!65 &947616593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3733,7 +3733,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraTransform: {fileID: 0}
-  npcBillboard: {fileID: 0}
 --- !u!65 &1221806538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3964,27 +3963,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223105990}
   m_CullTransparentMesh: 1
---- !u!1 &1505474004
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1505474010}
-  - component: {fileID: 1505474009}
-  - component: {fileID: 1505474008}
-  - component: {fileID: 1505474007}
-  - component: {fileID: 1505474006}
-  - component: {fileID: 1505474005}
-  m_Layer: 3
-  m_Name: StationaryNPC
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1254320023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,7 +5187,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraTransform: {fileID: 0}
-  npcBillboard: {fileID: 0}
 --- !u!65 &1928834744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5436,7 +5413,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraTransform: {fileID: 0}
-  npcBillboard: {fileID: 0}
 --- !u!65 &2016346167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6281,7 +6257,6 @@ SceneRoots:
   - {fileID: 417631489}
   - {fileID: 1928834747}
   - {fileID: 2016346170}
-  - {fileID: 1505474010}
   - {fileID: 359170000}
   - {fileID: 2021272410}
   - {fileID: 849361719}
