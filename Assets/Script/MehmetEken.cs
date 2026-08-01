@@ -16,7 +16,7 @@ public class MehmetEken : MonoBehaviour
     void Update()
     {
         // 2. Klavyeden anlık yön girdilerini okuyun
-        Vector2 inputVector = Vector2.zero;
+        Vector3 inputVector = Vector3.zero;
 
         if (Keyboard.current != null)
         {
@@ -25,10 +25,13 @@ public class MehmetEken : MonoBehaviour
             if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) inputVector.y = -1f;
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) inputVector.x = -1f;
             if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) inputVector.x = 1f;
+
+            if (Keyboard.current.spaceKey.isPressed) inputVector.z = 1f;
+            if (Keyboard.current.leftShiftKey.isPressed) inputVector.z = -1f;
         }
 
         // 3. Girdileri 3 boyutlu hareket vektörüne dönüştürün
-        Vector3 direction = new Vector3(inputVector.x, 0f, inputVector.y);
+        Vector3 direction = new Vector3(inputVector.x, inputVector.z, inputVector.y);
 
         // 4. Objeyi hareket ettirin
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
