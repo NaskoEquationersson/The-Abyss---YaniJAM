@@ -627,6 +627,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 0}
   checkRadius: 0.2
   groundLayer:
@@ -888,6 +889,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 0}
   checkRadius: 0.2
   groundLayer:
@@ -1152,6 +1154,7 @@ MonoBehaviour:
   speed: 7.5
   rb: {fileID: 947616597}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 91077888}
   checkRadius: 0.2
   groundLayer:
@@ -1520,6 +1523,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 0}
   checkRadius: 0.2
   groundLayer:
@@ -2002,6 +2006,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 0}
   checkRadius: 0.2
   groundLayer:
@@ -2110,10 +2115,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2016346170}
-  - component: {fileID: 2016346169}
-  - component: {fileID: 2016346168}
   - component: {fileID: 2016346167}
   - component: {fileID: 2016346166}
+  - component: {fileID: 2016346171}
+  - component: {fileID: 2016346172}
   m_Layer: 3
   m_Name: KutsalBaran
   m_TagString: Untagged
@@ -2136,6 +2141,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   jumpForce: 5
+  jumpCooldown: 0.2
   groundCheckPoint: {fileID: 0}
   checkRadius: 0.2
   groundLayer:
@@ -2163,63 +2169,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2016346168
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016346165}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2016346169
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016346165}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &2016346170
 Transform:
   m_ObjectHideFlags: 0
@@ -2235,6 +2184,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016346171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016346165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0760554a210c4c59b0806fcb1355d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionalBillboard
+  spriteRenderer: {fileID: 2016346172}
+  directionSprites:
+  - {fileID: 21300000, guid: 565e8b543286ca9789b93b7c56d6630a, type: 3}
+  - {fileID: 21300000, guid: 49e7b956f72e1a5c8b6688a8f631c319, type: 3}
+  - {fileID: 21300000, guid: 6811bf985e68a604fa4e389387d4b475, type: 3}
+  - {fileID: 21300000, guid: 55c9ed2a509ba398795a0b56b5376aa7, type: 3}
+  - {fileID: 21300000, guid: 18e46daa6e326d74b805db3d13cf0a30, type: 3}
+  - {fileID: 21300000, guid: 0d8c83df571352fd1939a09010a01160, type: 3}
+  - {fileID: 21300000, guid: 767fc45ee2fefd251ab35abe04a4e116, type: 3}
+  - {fileID: 21300000, guid: 5ecdbeabc59a7b579b81d93edb85c167, type: 3}
+  cameraTransform: {fileID: 330585546}
+  playerMovement: {fileID: 947616592}
+--- !u!212 &2016346172
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016346165}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &2021272406
 GameObject:
   m_ObjectHideFlags: 0

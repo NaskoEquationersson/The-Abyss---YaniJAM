@@ -26,6 +26,8 @@ public class MehmetEken : MonoBehaviour
     public Transform cameraTransform;
     private Vector3 moveDirection; 
 
+    public Vector3 LastMoveDirection { get; private set; } = Vector3.forward;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -59,6 +61,10 @@ public class MehmetEken : MonoBehaviour
         Quaternion cameraYawRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         moveDirection = cameraYawRotation * rawDirection; // store in a field so FixedUpdate can use it
 
+        if (moveDirection.sqrMagnitude > 0.01f)
+        {
+            LastMoveDirection = moveDirection.normalized; // only update when actually moving, so it holds last-faced direction when idle
+        }
     }
 
 
