@@ -3,20 +3,24 @@ using UnityEngine;
 public class SettingsManager : MonoBehaviour
 {
     [Header("Paneller / Gruplar")]
-    [SerializeField] private GameObject mainSettingsGroup; // Müzikler ve Kontroller butonlarının grubu
-    [SerializeField] private GameObject slidersContainer;  // Slider'ların (Müzik ayarlarının) durduğu grup
-    [SerializeField] private GameObject controllerContainer; // YENİ: Kontrol tuşları bilgisinin durduğu grup
+    [SerializeField] private GameObject mainSettingsGroup;
+    [SerializeField] private GameObject slidersContainer;
+    [SerializeField] private GameObject controllerContainer;
 
     [Header("Geri Dönülecek Ekran")]
-    [SerializeField] private GameObject returnTarget; // Ana menüden açıldıysa Baslangic_Panel, pause'dan açıldıysa pauseMenuPanel
+    [SerializeField] private GameObject returnTarget; // default fallback; can be overridden at runtime
 
     void OnEnable()
     {
-        // Ayarlar Paneli her açıldığında varsayılan olarak Ana Ayarlar görünür olsun, diğerleri gizlensin
         ResetToMainSettings();
     }
 
-    // "MÜZİKLER" Butonuna bağlanacak fonksiyon
+    // Call this from whichever menu opens Settings, so it knows where to return
+    public void SetReturnTarget(GameObject target)
+    {
+        returnTarget = target;
+    }
+
     public void OpenAudioDetails()
     {
         if (mainSettingsGroup != null) mainSettingsGroup.SetActive(false);
@@ -24,7 +28,6 @@ public class SettingsManager : MonoBehaviour
         if (controllerContainer != null) controllerContainer.SetActive(false);
     }
 
-    // "KONTROLLER" Butonuna bağlanacak YENİ fonksiyon
     public void OpenControllerDetails()
     {
         if (mainSettingsGroup != null) mainSettingsGroup.SetActive(false);
@@ -32,10 +35,8 @@ public class SettingsManager : MonoBehaviour
         if (controllerContainer != null) controllerContainer.SetActive(true);
     }
 
-    // Sol üstteki görsel ESC Butonuna veya Klavyedeki ESC'ye basılınca çalışacak fonksiyon
     public void OnEscClicked()
     {
-        // Eğer Slider'lar veya Controller ekranı açıksa: önce onları kapatıp ana butonları geri getir
         if ((slidersContainer != null && slidersContainer.activeSelf) ||
             (controllerContainer != null && controllerContainer.activeSelf))
         {
@@ -43,7 +44,6 @@ public class SettingsManager : MonoBehaviour
             if (controllerContainer != null) controllerContainer.SetActive(false);
             if (mainSettingsGroup != null) mainSettingsGroup.SetActive(true);
         }
-        // Eğer zaten Ana Ayarlar ekranındaysa: Ayarlar Panelini tamamen kapat ve geldiği ekrana dön
         else
         {
             gameObject.SetActive(false);
@@ -58,11 +58,5 @@ public class SettingsManager : MonoBehaviour
         if (controllerContainer != null) controllerContainer.SetActive(false);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnEscClicked();
-        }
-    }
+    // Escape handling removed from here — PauseManager is now the single authority (see below)
 }

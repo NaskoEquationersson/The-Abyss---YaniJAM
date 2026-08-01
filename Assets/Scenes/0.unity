@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 299779098}
   - component: {fileID: 299779097}
   m_Layer: 5
-  m_Name: BASLA
+  m_Name: DEVAM_ET
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3006,6 +3006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pauseMenuPanel: {fileID: 1192099550}
   settingsPanel: {fileID: 436509327}
+  settingsManager: {fileID: 0}
 --- !u!4 &1055401832
 Transform:
   m_ObjectHideFlags: 0
@@ -3676,6 +3677,7 @@ MonoBehaviour:
   animationTriggerName: StartGame
   menuCanvas: {fileID: 1254320023}
   settingsPanel: {fileID: 436509327}
+  settingsManager: {fileID: 0}
 --- !u!4 &1208703337
 Transform:
   m_ObjectHideFlags: 0
@@ -4244,7 +4246,7 @@ GameObject:
   - component: {fileID: 1634647834}
   - component: {fileID: 1634647833}
   m_Layer: 5
-  m_Name: DEVAM_ET
+  m_Name: AYARLAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4330,7 +4332,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1208703336}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnContinueButtonClicked
+        m_MethodName: OnSettingsButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5800,7 +5802,7 @@ GameObject:
   - component: {fileID: 2066608143}
   - component: {fileID: 2066608142}
   m_Layer: 5
-  m_Name: AYARLAR
+  m_Name: BASLA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5886,7 +5888,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1208703336}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnSettingsButtonClicked
+        m_MethodName: OnStartButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

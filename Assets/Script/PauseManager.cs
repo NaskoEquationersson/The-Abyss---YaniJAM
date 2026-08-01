@@ -6,18 +6,19 @@ public class PauseManager : MonoBehaviour
     [Header("UI Panelleri")]
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private SettingsManager settingsManager;
 
     private bool isPaused = false;
 
     void Update()
     {
-        // Klavyeden ESC'ye basıldığında tetiklenir
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Eğer Ayarlar Paneli açıksa, ana ESC tuşu önce onu/içindekileri etkilesin
             if (settingsPanel != null && settingsPanel.activeSelf)
             {
-                return; 
+                // Settings is open — let SettingsManager handle this Escape press, not us
+                if (settingsManager != null) settingsManager.OnEscClicked();
+                return;
             }
 
             if (isPaused)
@@ -59,7 +60,7 @@ public class PauseManager : MonoBehaviour
     {
         SaveGameData();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu"); 
+        SceneManager.LoadScene("0");
     }
 
     public void OpenSettings()
@@ -68,6 +69,11 @@ public class PauseManager : MonoBehaviour
         {
             if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
             settingsPanel.SetActive(true);
+
+            if (settingsManager != null && pauseMenuPanel != null)
+            {
+                settingsManager.SetReturnTarget(pauseMenuPanel);
+            }
         }
     }
 
