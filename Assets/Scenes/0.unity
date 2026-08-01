@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dusenzi
   target: {fileID: 947616596}
   smoothSpeed: 0.125
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 947616597}
   offset: {x: 0, y: 3, z: -8}
 --- !u!1 &410087039
 GameObject:
