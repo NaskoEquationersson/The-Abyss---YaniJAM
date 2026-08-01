@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Dive In - YaniJAM.slnx"
+    "dotnet.defaultSolution": "The-Abyss---YaniJAM.slnx"
 }
