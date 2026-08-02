@@ -44,8 +44,14 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        // Simplest jam-safe behavior: just disable the object. Expand later if needed (respawn, game over, etc.)
-        gameObject.SetActive(false);
+        if (CompareTag("Player") && DeathScreenManager.Instance != null)
+        {
+            DeathScreenManager.Instance.ShowDeathScreen();
+        }
+        else
+        {
+            gameObject.SetActive(false); // hostages still just disappear on death
+        }
     }
     void Update()
     {
