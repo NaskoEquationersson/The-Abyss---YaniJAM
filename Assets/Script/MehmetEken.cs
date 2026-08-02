@@ -54,7 +54,7 @@ public class MehmetEken : MonoBehaviour
             {
                 jumpRequested = true;
             }   
-            if (Keyboard.current.leftShiftKey.isPressed)
+            if (Keyboard.current.ctrlKey.isPressed)
             {
                 isSprinting = true;
             }

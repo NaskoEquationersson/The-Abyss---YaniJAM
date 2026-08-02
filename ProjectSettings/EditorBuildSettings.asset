@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameTest.unity
     guid: d7798f184931fd5269318149e06d277b
+  - enabled: 1
+    path: Assets/Scenes/Firefigther.unity
+    guid: feeb6095518537841809f69386a629f5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
