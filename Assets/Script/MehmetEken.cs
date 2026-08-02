@@ -28,6 +28,10 @@ public class MehmetEken : MonoBehaviour
 
     public Vector3 LastMoveDirection { get; private set; } = Vector3.forward;
 
+    [Header("Sprint Settings")]
+    public float sprintMultiplier = 1.6f;
+    private bool isSprinting = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,6 +53,14 @@ public class MehmetEken : MonoBehaviour
             if (Keyboard.current.spaceKey.wasPressedThisFrame) 
             {
                 jumpRequested = true;
+            }   
+            if (Keyboard.current.leftShiftKey.isPressed)
+            {
+                isSprinting = true;
+            }
+            else
+            {
+                isSprinting = false;
             }
         }
 
@@ -89,6 +101,7 @@ public class MehmetEken : MonoBehaviour
             }
         }
 
-        rb.MovePosition(rb.position + moveDirection * speed * Time.fixedDeltaTime);
+        float currentSpeed = isSprinting ? speed * sprintMultiplier : speed;
+        rb.MovePosition(rb.position + moveDirection * currentSpeed * Time.fixedDeltaTime);
     }
 }
