@@ -9,6 +9,21 @@ public class CurrencyManager : MonoBehaviour
     public TMP_Text moneyText;
 
     private int currentMoney = 0;
+    public int GetMoney()
+    {
+        return currentMoney;
+    }
+
+    public bool SpendMoney(int amount)
+    {
+        if (currentMoney >= amount)
+        {
+            currentMoney -= amount;
+            UpdateMoneyUI();
+            return true;
+        }
+        return false;
+    }
 
     void Awake()
     {
